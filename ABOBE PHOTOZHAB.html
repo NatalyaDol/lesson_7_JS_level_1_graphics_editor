@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ABOBE PHOTOZHAB</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<button class="clear" onclick="clearCanvas()">Чистый лист</button>
+	<div class="canv">
+		<canvas id="canv" width="1000" height="400"></canvas>
+	</div>
+	<div class="tools">
+		<div class="coordinates">
+			<p id="x"><b>x: </b> <span id="xCoord"></span></p>
+			<p id="y"><b>y: </b> <span id="yCoord"></span></p>
+			<br>
+			<button class="toolButton" id='brush'>Brush</button>
+			<!-- <button class="toolButton" id='notbrush'>NotBrush</button>
+			<button class="toolButton" id='notbrush2'>NotBrush 2</button> -->
+			<button class="toolButton" id='circle'>Circle</button>
+			<button class="toolButton" id='line'>Line</button>
+			<button class="toolButton" id='square'>Square</button>
+			<select id='sizeSelect'>
+				<option>5</option>
+				<option>10</option>
+				<option>15</option>
+				<option>20</option>
+			</select>
+			<input type="color" id="color">
+		</div>
+	</div>
+
+
+	<script src="script.js"></script>
+</body>
+</html>
