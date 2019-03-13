@@ -9,7 +9,10 @@
 </head>
 
 <body>
-	<button class="clear" onclick="clearCanvas()">Чистый лист</button>
+	<button class="clear"  onclick="clearCanvas()">Чистый лист</button>
+	<a id="download" download="image.png">
+		<button type="button" onClick="download()">Download</button>
+	</a>
 	<div class="canv">
 		<canvas id="canv" width="1000" height="400"></canvas>
 	</div>

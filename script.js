@@ -28,6 +28,7 @@ var system = {
 //рендер Системы
 var renderSystem = function (obj, elem, action) {
 	obj[elem] = action;
+	console.log(action);
 };
 
 //Получение коодинат
@@ -114,6 +115,8 @@ var endDraw = function (evt) {
 };
 
 var drawBrush = function (evt) {
+	canvas.onmouseup = null;
+	canvas.onmousedown = null;
 	canvas.onmousemove = function (evt) {
 		ctx.beginPath ();
 		ctx.fillStyle = system.currentColor;
@@ -137,9 +140,9 @@ var drawCircle = function (evt) {
 		ctx.beginPath ();
 		ctx.strokeStyle = system.currentColor;
 		ctx.fillStyle = system.currentColor;
-		ctx.arc (x2,y2,Math.abs(x2 - x1),0,2*Math.PI,false);
-		ctx.fillStyle = system.currentColor;
-		ctx.fill ();
+		ctx.arc (x2,y2,Math.abs(x2 - x1),0,2*Math.PI);
+		//ctx.fillStyle = system.currentColor;
+		//ctx.fill ();
 		ctx.stroke();
 	}	
 };
@@ -185,6 +188,7 @@ var drawSquare = function (evt) {
 		ctx.lineTo (x2,y2);
 		ctx.lineTo (x1,y2);
 		ctx.moveTo (x1,y1);
+		ctx.strokeStyle = system.currentColor;
 		ctx.fillStyle = system.currentColor;
 		ctx.fill ();
 		ctx.stroke();
@@ -227,6 +231,14 @@ var clearCanvas =  function() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
+//Download
+var download = () => {
+	let download = document.getElementById("download");
+	let image = document.getElementById('canv').toDataURL("image/png")
+		.replace("image/png", "image/octet-stream");
+	
+	download.setAttribute("href", image);
+};
 
 canvas.addEventListener ('mousedown', mouseDownSaveCoord);
 canvas.addEventListener ('mouseup', mouseUpSaveCoord);
