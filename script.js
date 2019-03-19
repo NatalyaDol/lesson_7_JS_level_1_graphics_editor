@@ -118,9 +118,25 @@ var drawBrush = function (evt) {
 	canvas.onmouseup = null;
 	canvas.onmousedown = null;
 	canvas.onmousemove = function (evt) {
-		ctx.beginPath ();
-		ctx.fillStyle = system.currentColor;
-		ctx.fillRect (xCoord.innerText, yCoord.innerText, system.brushSize, system.brushSize);
+		//прерывистая линия 
+		//ctx.beginPath ();
+		// ctx.fillStyle = system.currentColor;
+		// ctx.fillRect (xCoord.innerText, yCoord.innerText, system.brushSize, system.brushSize);
+
+		//сплошная линия
+		let lastPointx;
+		let lastPointy;
+		canvas.onmousemove = function(evt) {
+			ctx.beginPath();
+			ctx.strokeStyle = system.currentColor;
+			ctx.lineWidth = system.brushSize;
+			ctx.moveTo(lastPointx, lastPointy);
+			ctx.lineTo(evt.offsetX, evt.offsetY);
+			ctx.stroke();
+			lastPointx = event.offsetX;
+			lastPointy = event.offsetY;
+		}
+
 	}
 };
 
