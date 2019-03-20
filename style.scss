@@ -1,20 +1,97 @@
 body {
-    background-color: rgba(47, 79, 79, 0.603);
+    background-color: rgba(138, 172, 211, 0.555);
+    color: rgb(49, 52, 61);
+
+    main {
+        width: 1200px;
+        margin: 0 auto;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .canv {
+            position: relative;
+            
+
+            .canv__coord {
+                display: flex;
+                position: absolute;
+                left: 1%;
+                top: 90%
+            }
+        }
+    }
+
+    .tools {
+        .coordinates {
+            width: 1000px;
+            display: flex;
+            align-items: center;
+
+            p {
+                padding: 0 30px;
+            }
+
+            
+            .toolButton {
+                width: 38px;
+                height: 38px;
+                background-position: center;
+            }
+            #brush {
+                
+                background-image: url(images/pencil.png);
+                background-repeat: no-repeat;
+            }
+
+            #circle {
+                background-image: url(images/colors.png);
+                background-repeat: no-repeat;
+            }
+
+            #line {
+                background-image: url(images/minus.png);
+                background-repeat: no-repeat;
+            }
+
+            #square {
+                background-image: url(images/windows.png);
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
     button {
-        background:  rgba(47, 79, 79, 0.829);
-        color: white;
+        background:  rgba(138, 172, 211, 0.972);
+        color:rgb(49, 52, 61);
         padding: 10px;
+        outline: none;
     }
 
     .button-active {
-        background:  rgba(58, 38, 133, 0.986);
+        background:  rgba(242, 241, 245, 0.986);
+        
+    }
+
+    button:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         outline: none;
+    }
+
+    button:active {
+        background:  rgba(242, 241, 245, 0.986);
+        outline: none;
+        color: black;
     }
 
     #canv {
         background-color: white;
-        width: 1000px;
-        height: 400px;
+        width: 1200px;
+        height: 500px;
         border: 1px solid black
     }
 }
+
+

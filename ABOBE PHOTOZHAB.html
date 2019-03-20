@@ -5,37 +5,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>ABOBE PHOTOZHAB</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<button class="clear"  onclick="clearCanvas()">Чистый лист</button>
-	<a id="download" download="image.png">
-		<button type="button" onClick="download()">Download</button>
-	</a>
-	<div class="canv">
-		<canvas id="canv" width="1000" height="400"></canvas>
-	</div>
-	<div class="tools">
-		<div class="coordinates">
-			<p id="x"><b>x: </b> <span id="xCoord"></span></p>
-			<p id="y"><b>y: </b> <span id="yCoord"></span></p>
-			<br>
-			<button class="toolButton" id='brush'>Brush</button>
-			<!-- <button class="toolButton" id='notbrush'>NotBrush</button>
-			<button class="toolButton" id='notbrush2'>NotBrush 2</button> -->
-			<button class="toolButton" id='circle'>Circle</button>
-			<button class="toolButton" id='line'>Line</button>
-			<button class="toolButton" id='square'>Square</button>
-			<select id='sizeSelect'>
-				<option>5</option>
-				<option>10</option>
-				<option>15</option>
-				<option>20</option>
-			</select>
-			<input type="color" id="color">
+	<main>
+		<header>
+			<div class="tools">
+				<div class="coordinates">
+					<button class="toolButton" id='brush'></button>
+					<!-- <button class="toolButton" id='notbrush'>NotBrush</button>
+					<button class="toolButton" id='notbrush2'>NotBrush 2</button> -->
+					<button class="toolButton" id='circle'></button>
+					<button class="toolButton" id='line'></button>
+					<button class="toolButton" id='square'></button>
+					<input type="range" min="0" max="50" value="0" step="1" id="inp_type_range">
+    				<p id="inp_type_range_valuy_p"></p>
+					<p>Границы</p> 
+					<input type="color" id="color">
+					<p>Заливка</p> 
+					<input type="color" id="color-fill">
+				</div>
+			</div>
+			<div class="main-btn">
+				<button class="clear"  onclick="clearCanvas()">Чистый лист</button>
+			<a id="download" download="image.png">
+				<button type="button" onClick="download()">Download</button>
+			</a>
+			</div>
+			
+		</header>
+		
+		<div class="canv">
+			<canvas id="canv" width="1200" height="500"></canvas>
+			<section class="canv__coord">
+				<p id="x"><b>x: </b> <span id="xCoord"></span></p>
+				<p id="y"><b>y: </b> <span id="yCoord"></span></p>
+			</section>
+			
 		</div>
-	</div>
+		
+	</main>
+
+
 
 
 	<script src="script.js"></script>

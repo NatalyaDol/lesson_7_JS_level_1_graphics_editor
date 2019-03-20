@@ -1,7 +1,8 @@
 var doc = document;
 
-var size = doc.getElementById('sizeSelect');
+var size = doc.getElementById('inp_type_range');
 var newColor = doc.getElementById('color');
+var newColorFill = doc.getElementById('color-fill');
 var canvas = doc.getElementById('canv');
 var ctx = canvas.getContext('2d');// Метод для канвас -  будет в формате 2d.
 //Это обязательное объявление переменной для канваса
@@ -21,6 +22,7 @@ var system = {
 	width: canvas.getAttribute('width'),
 	height: canvas.getAttribute('height'),
 	currentColor: newColor.value,//текущий цвет, по умолчанию черный
+	currentColorFill: newColorFill.value,//текущий цвет, по умолчанию черный
 	currentTool: '',//текущий инструмент
 	brushSize: size.value
 };
@@ -54,6 +56,11 @@ var switchColor = function (colorInput) {
 	return colorInput.value;
 };
 
+//Изменение цвета заливки
+var switchColorFill = function (colorInput) {
+	return colorInput.value;
+};
+
 //Изменение инструмента
 var switchTool = function (button) {
 	//снятие выделения активности выбранного инструмента
@@ -84,15 +91,29 @@ var switchTool = function (button) {
 	
 };
 
+// //Мышинные события (клики). На все окно
+// var mouseActionsClick = function (evt) {
+// 	if (evt.target.classList.contains('toolButton') == true) {
+// 		renderSystem (system, 'currentTool', switchTool (evt.target));
+// 	} else if (evt.target.id == 'sizeSelect') {
+// 		renderSystem (system, 'brushSize', switchSize (evt.target));
+// 	} else if (evt.target.id == 'color') {
+// 		renderSystem (system, 'currentColor', switchColor (evt.target));
+// 	}
+// };
+
 //Мышинные события (клики). На все окно
 var mouseActionsClick = function (evt) {
 	if (evt.target.classList.contains('toolButton') == true) {
 		renderSystem (system, 'currentTool', switchTool (evt.target));
-	} else if (evt.target.id == 'sizeSelect') {
+	} else if (evt.target.id == 'inp_type_range') {
 		renderSystem (system, 'brushSize', switchSize (evt.target));
 	} else if (evt.target.id == 'color') {
 		renderSystem (system, 'currentColor', switchColor (evt.target));
+	} else if (evt.target.id == 'color-fill') {
+		renderSystem (system, 'currentColorFill', switchColorFill (evt.target));
 	}
+	
 };
 
 //НЕПОСРЕДСТВЕННО РИСОВАНИЕ 
@@ -157,8 +178,8 @@ var drawCircle = function (evt) {
 		ctx.strokeStyle = system.currentColor;
 		ctx.fillStyle = system.currentColor;
 		ctx.arc (x2,y2,Math.abs(x2 - x1),0,2*Math.PI);
-		//ctx.fillStyle = system.currentColor;
-		//ctx.fill ();
+		ctx.fillStyle = system.currentColorFill;
+		ctx.fill ();
 		ctx.stroke();
 	}	
 };
@@ -205,7 +226,7 @@ var drawSquare = function (evt) {
 		ctx.lineTo (x1,y2);
 		ctx.moveTo (x1,y1);
 		ctx.strokeStyle = system.currentColor;
-		ctx.fillStyle = system.currentColor;
+		ctx.fillStyle = system.currentColorFill;
 		ctx.fill ();
 		ctx.stroke();
 	}	
@@ -255,6 +276,15 @@ var download = () => {
 	
 	download.setAttribute("href", image);
 };
+//input-type-range размер кисти 
+function valueInpTypeRange() {
+    var rng = document.getElementById('inp_type_range');
+    var p = document.getElementById('inp_type_range_valuy_p');
+    p.innerHTML = rng.value;
+}
+//Навешиваем событие
+var a = document.getElementById('inp_type_range');
+a.addEventListener('input', valueInpTypeRange);
 
 canvas.addEventListener ('mousedown', mouseDownSaveCoord);
 canvas.addEventListener ('mouseup', mouseUpSaveCoord);
