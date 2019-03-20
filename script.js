@@ -91,17 +91,6 @@ var switchTool = function (button) {
 	
 };
 
-// //Мышинные события (клики). На все окно
-// var mouseActionsClick = function (evt) {
-// 	if (evt.target.classList.contains('toolButton') == true) {
-// 		renderSystem (system, 'currentTool', switchTool (evt.target));
-// 	} else if (evt.target.id == 'sizeSelect') {
-// 		renderSystem (system, 'brushSize', switchSize (evt.target));
-// 	} else if (evt.target.id == 'color') {
-// 		renderSystem (system, 'currentColor', switchColor (evt.target));
-// 	}
-// };
-
 //Мышинные события (клики). На все окно
 var mouseActionsClick = function (evt) {
 	if (evt.target.classList.contains('toolButton') == true) {
@@ -157,7 +146,6 @@ var drawBrush = function (evt) {
 			lastPointx = event.offsetX;
 			lastPointy = event.offsetY;
 		}
-
 	}
 };
 
@@ -231,7 +219,6 @@ var drawSquare = function (evt) {
 		ctx.stroke();
 	}	
 };
-
 
 //Сохранение координат при mousedown
 var mouseDownSaveCoord = function (evt) {
