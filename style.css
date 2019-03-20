@@ -1,0 +1,102 @@
+body {
+  background-color: rgba(138, 172, 211, 0.555);
+  color: #31343d;
+}
+
+body main {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+body main header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body main .canv {
+  position: relative;
+}
+
+body main .canv .canv__coord {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 1%;
+  top: 90%;
+}
+
+body .tools .coordinates {
+  width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .tools .coordinates p {
+  padding: 0 30px;
+}
+
+body .tools .coordinates .toolButton {
+  width: 38px;
+  height: 38px;
+  background-position: center;
+}
+
+body .tools .coordinates #brush {
+  background-image: url(images/pencil.png);
+  background-repeat: no-repeat;
+}
+
+body .tools .coordinates #circle {
+  background-image: url(images/colors.png);
+  background-repeat: no-repeat;
+}
+
+body .tools .coordinates #line {
+  background-image: url(images/minus.png);
+  background-repeat: no-repeat;
+}
+
+body .tools .coordinates #square {
+  background-image: url(images/windows.png);
+  background-repeat: no-repeat;
+}
+
+body button {
+  background: rgba(138, 172, 211, 0.972);
+  color: #31343d;
+  padding: 10px;
+  outline: none;
+}
+
+body .button-active {
+  background: rgba(242, 241, 245, 0.986);
+}
+
+body button:hover {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+body button:active {
+  background: rgba(242, 241, 245, 0.986);
+  outline: none;
+  color: black;
+}
+
+body #canv {
+  background-color: white;
+  width: 1200px;
+  height: 500px;
+  border: 1px solid black;
+}
+/*# sourceMappingURL=style.css.map */
