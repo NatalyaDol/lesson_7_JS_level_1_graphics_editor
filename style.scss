@@ -68,6 +68,7 @@ body {
         color:rgb(49, 52, 61);
         padding: 10px;
         outline: none;
+        
     }
 
     .button-active {
@@ -78,6 +79,8 @@ body {
     button:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         outline: none;
+        cursor: pointer;
+
     }
 
     button:active {

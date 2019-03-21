@@ -28,9 +28,9 @@ var system = {
 };
 
 //рендер Системы
-var renderSystem = function (obj, elem, action) {
-	obj[elem] = action;
-	console.log(action);
+var renderSystem = function (obj, elem, value) {
+	obj[elem] = value;
+	console.log(value);
 };
 
 //Получение коодинат
@@ -52,14 +52,14 @@ var switchSize = function (list) {
 };
 
 //Изменение цвета кисти
-var switchColor = function (colorInput) {
-	return colorInput.value;
-};
+// var switchColor = function (colorInput) {
+// 	return colorInput.value;
+// };
 
 //Изменение цвета заливки
-var switchColorFill = function (colorInput) {
-	return colorInput.value;
-};
+// var switchColorFill = function (colorInput) {
+// 	return colorInput.value;
+// };
 
 //Изменение инструмента
 var switchTool = function (button) {
@@ -95,12 +95,8 @@ var switchTool = function (button) {
 var mouseActionsClick = function (evt) {
 	if (evt.target.classList.contains('toolButton') == true) {
 		renderSystem (system, 'currentTool', switchTool (evt.target));
-	} else if (evt.target.id == 'inp_type_range') {
-		renderSystem (system, 'brushSize', switchSize (evt.target));
-	} else if (evt.target.id == 'color') {
-		renderSystem (system, 'currentColor', switchColor (evt.target));
-	} else if (evt.target.id == 'color-fill') {
-		renderSystem (system, 'currentColorFill', switchColorFill (evt.target));
+	// } else if (evt.target.id == 'inp_type_range') {
+	// 	renderSystem (system, 'brushSize', switchSize (evt.target));
 	}
 	
 };
@@ -163,6 +159,7 @@ var drawCircle = function (evt) {
 		let y2 = saveCoordUp[1];
 
 		ctx.beginPath ();
+		ctx.lineWidth = system.brushSize;
 		ctx.strokeStyle = system.currentColor;
 		ctx.fillStyle = system.currentColor;
 		ctx.arc (x2,y2,Math.abs(x2 - x1),0,2*Math.PI);
@@ -185,6 +182,7 @@ var drawLine = function (evt) {
 		let y2 = saveCoordUp[1];
 
 		ctx.beginPath(); 
+		ctx.lineWidth = system.brushSize;
 		ctx.strokeStyle = system.currentColor;;
 		ctx.moveTo(x1,y1);
 		ctx.lineTo(x2,y2);
@@ -207,12 +205,13 @@ var drawSquare = function (evt) {
 		let y2 = saveCoordUp[1];
 
 		ctx.beginPath ();
+		ctx.lineWidth = system.brushSize;
 		ctx.strokeStyle = system.currentColor;
 		ctx.moveTo (x1,y1);
 		ctx.lineTo (x2,y1);
 		ctx.lineTo (x2,y2);
 		ctx.lineTo (x1,y2);
-		ctx.moveTo (x1,y1);
+		ctx.lineTo (x1,y1);
 		ctx.strokeStyle = system.currentColor;
 		ctx.fillStyle = system.currentColorFill;
 		ctx.fill ();
@@ -271,6 +270,22 @@ function valueInpTypeRange() {
 }
 //Навешиваем событие
 var a = document.getElementById('inp_type_range');
+
+newColor.addEventListener('change', function() {
+	console.log(this);
+	renderSystem(system, 'currentColor', this.value)
+});
+
+newColorFill.addEventListener('change', function() {
+	console.log(this);
+	renderSystem(system, 'currentColorFill', this.value)
+});
+
+size.addEventListener('change', function() {
+	console.log(this);
+	renderSystem(system, 'brushSize', this.value)
+});
+
 a.addEventListener('input', valueInpTypeRange);
 
 canvas.addEventListener ('mousedown', mouseDownSaveCoord);
